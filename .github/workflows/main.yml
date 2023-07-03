@@ -169,6 +169,11 @@ jobs:
         CMAKE_BUILD_TYPE: "RelWithDebInfo"
       run: |
         cmake --build "build/ci" --config ${{ env.CMAKE_BUILD_TYPE }} --target StreamFX
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-windows
+        path: build
 
   macos:
     strategy:
@@ -307,6 +312,11 @@ jobs:
         CMAKE_BUILD_TYPE: "RelWithDebInfo"
       run: |
         cmake --build "build/ci" --config RelWithDebInfo --target StreamFX
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-macos
+        path: build
 
   ubuntu:
     strategy:
@@ -471,3 +481,9 @@ jobs:
       shell: bash
       run: |
         cmake --build "build/ci" --config RelWithDebInfo --target StreamFX
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-ubuntu
+        path: build
+
